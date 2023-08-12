@@ -1,11 +1,19 @@
 const Employee = require('../models/employee')
 
 module.exports.signIn = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/students');
+    }
     res.render('sign_in',{
         title:'Employee Sign In | CareerHub'
+        
+    
     })
 }
 module.exports.signUp=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/students');
+    }
     res.render('sign_up',{
         title:'Employee Sign Up | CareerHub'
     })
@@ -26,5 +34,23 @@ module.exports.create = async(req,res)=>{
         return res.redirect('back');
     }
 }
+
+// Creating Session
+module.exports.createSession = (req, res) => {
+    console.log("Logged in Successfully");
+    return res.redirect("/students");
+  };
+
+// Destry Session
+module.exports.destroySession = (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        console.log("Error in Log Out!");
+        return;
+      }
+      console.log("Successfully logged out!");
+      return res.redirect("/");
+    });
+};
 
 
