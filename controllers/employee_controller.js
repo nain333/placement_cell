@@ -6,8 +6,6 @@ module.exports.signIn = function(req,res){
     }
     res.render('sign_in',{
         title:'Employee Sign In | CareerHub'
-        
-    
     })
 }
 module.exports.signUp=function(req,res){
