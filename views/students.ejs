@@ -1,71 +1,120 @@
 <%- include("_navbar"); %>
 
-<!-- Vertically centered modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Add Student
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form class="modal-body" action="/students/createStudent" method="post">
-            <h5>Personal Information</h5>
-                <div class="row mb-3">
-                  <label for="name" class="col-sm-2 col-form-label">Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" required>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="batch" class="col-sm-2 col-form-label">Batch</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="batch" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="college" class="col-sm-2 col-form-label">College</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="college" required>
-                    </div>
-                </div>
+    <!-- Vertically centered modal -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add Student
+    </button>
 
-                <h5>Scores</h5>
-                <div class="row mb-3">
-                    <label for="dsa" class="col-sm-2 col-form-label">DSA</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="dsa" min="0" max="100" placeholder="Max: 100" required>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="row mb-3">
-                    <label for="webd" class="col-sm-2 col-form-label">WebDev</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="webd" min="0" max="100" placeholder="Max: 100" required>
+                <form class="modal-body" action="/students/createStudent" method="post">
+                    <h5>Personal Information</h5>
+                    <div class="row mb-3">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="react" class="col-sm-2 col-form-label">React</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="react" min="0" max="100" placeholder="Max: 100" required>
+                    <div class="row mb-3">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
                     </div>
-                </div>
+                    <div class="row mb-3">
+                        <label for="batch" class="col-sm-2 col-form-label">Batch</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="batch" class="form-control" id="batch" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="college" class="col-sm-2 col-form-label">College</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="college" class="form-control" id="college" required>
+                        </div>
+                    </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Create Students</button>
+                    <h5>Scores</h5>
+                    <div class="row mb-3">
+                        <label for="dsa" class="col-sm-2 col-form-label">DSA</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="dsa" class="form-control" id="dsa" min="0" max="100"
+                                placeholder="Max: 100" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="webd" class="col-sm-2 col-form-label">WebDev</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="webd" class="form-control" id="webd" min="0" max="100"
+                                placeholder="Max: 100" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="react" class="col-sm-2 col-form-label">React</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="react" class="form-control" id="react" min="0" max="100"
+                                placeholder="Max: 100" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Students</button>
+                    </div>
+                </form>
             </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
+
+    <!-- Table -->
+    <div class="container mt-4">
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 100px;">Sl. No</th>
+                <th scope="col">Student Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i=0;i < students.length; i++) { %>   
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td colspan="2">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        <%= students[i].name%>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                    <div class="accordion-body">
+                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+
+

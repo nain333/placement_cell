@@ -1,11 +1,12 @@
 const express = require('express')
-const router = express.Router()
+const router = express.Router();
+const passport = require('passport')
 const studentController = require('../controllers/students_controller');
 
-router.get('/',(req,res,next)=>{
-    console.log('inside the students route')
-    next()
-}, studentController.studentsPage)
+
+
+router.get('/',passport.checkAuthentication,studentController.studentsPage)
+router.post('/createStudent', studentController.createStudent)
 
 module.exports = router;
 
