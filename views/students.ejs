@@ -1,1 +1,71 @@
-<%- include("_navbar")%>
+<%- include("_navbar"); %>
+
+<!-- Vertically centered modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Student
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="modal-body" action="/students/createStudent" method="post">
+            <h5>Personal Information</h5>
+                <div class="row mb-3">
+                  <label for="name" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="email" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="batch" class="col-sm-2 col-form-label">Batch</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="batch" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="college" class="col-sm-2 col-form-label">College</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="college" required>
+                    </div>
+                </div>
+
+                <h5>Scores</h5>
+                <div class="row mb-3">
+                    <label for="dsa" class="col-sm-2 col-form-label">DSA</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="dsa" min="0" max="100" placeholder="Max: 100" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="webd" class="col-sm-2 col-form-label">WebDev</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="webd" min="0" max="100" placeholder="Max: 100" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="react" class="col-sm-2 col-form-label">React</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="react" min="0" max="100" placeholder="Max: 100" required>
+                    </div>
+                </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Create Students</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
