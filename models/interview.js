@@ -1,18 +1,17 @@
 const mongoose = require('mongoose')
 const interviewSchema = new mongoose.Schema({
 
+    student:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Student'
+    },
     company:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Company'  
     },
     date_of_visit:{
-        type:Date,
+        type: String,
         required:true,
-        
-    },
-    student:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:'Student'
     },
     result: {
         type: String,

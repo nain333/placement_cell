@@ -72,4 +72,44 @@
     </div>
   </div>
 
+
+  <!-- Table -->
+  <table class="table mt-4 table-bordered table-striped" style="width: 90%; margin: auto;">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">#</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Interview Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Update Status</th>
+        <th scope="col">Delete Interview</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr class="table-success">
+        <th scope="row">1</th>
+        <td>Ashis</td>
+        <td>Coding Ninjas</td>
+        <td>12 Aug 2023</td>
+        <td>Registered</td>
+        <td><a href="#">Update</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr> -->
+      <% let i = 0 %>
+      <% for(interview of interviews) { %>
+        <% i = i + 1 %>
+        <tr class="table-success">
+            <th scope="row"><%= i %></th>
+            <td><%= interview.student.name %></td>
+            <td><%= interview.company.name %></td>
+            <td><%= interview.date_of_visit %></td>
+            <td><%= interview.result %></td>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+          </tr>
+        <% } %>
+    </tbody>
+  </table>
+
  

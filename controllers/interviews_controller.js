@@ -4,11 +4,23 @@ const Student = require('../models/students');
 
 module.exports.createInterview=async function(req,res){
     try{
+const date = new Date(req.body.date);
+
+const options = {
+  weekday: 'short', // Short weekday name (e.g., "Tue")
+  month: 'short',   // Short month name (e.g., "Aug")
+  day: 'numeric',   // Numeric day (e.g., "22")
+  year: 'numeric'   // Full year (e.g., "2023")
+};
+
+const formattedDate = date.toLocaleDateString('en-US', options);
+console.log(formattedDate);
+
         console.log("Req.Body inside interview creation:",req.body)
         const interview = await Interview.create({
-            name: req.body.studentId,
+            student: req.body.studentId,
             company: req.body.companyId,
-            date_of_visit :req.body.date,
+            date_of_visit :formattedDate,
             result: req.body.result
         })    
         console.log("Successfully Created Interview!", interview);
@@ -23,10 +35,13 @@ module.exports.createInterview=async function(req,res){
 
 module.exports.interviewsPage=async function(req,res){
     try{
-        const interviews = await Interview.find({})
         const companies = await Company.find({})
         const students = await Student.find({})
+        const interviews = await Interview.find({})
+        .populate('company')
+        .populate('student')
 
+        console.log("Populated Interview: ",interviews)
     res.render('interview',{
         title:'Interviews | Career Hub',
         user:req.user,
