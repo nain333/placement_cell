@@ -1,0 +1,75 @@
+<%- include("_navbar"); %>
+
+  <!-- Vertically centered modal -->
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Create Interview
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Interviews</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="modal-body" action="/interviews/createInterview" method="post">
+
+          <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Student:</label>
+            <div class="col-sm-10">
+              <!-- <input type="text" name="name" class="form-control" id="name" required> -->
+              <select class="form-control" name="studentId">
+                <option>Select Student</option>
+                <% for(student of students) { %>
+                    <option value="<%= student._id %>"><%= student.name %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Company:</label>
+            <div class="col-sm-10">
+              <!-- <input type="text" name="name" class="form-control" id="name" required> -->
+              <select class="form-control" name="companyId">
+                <option>Select Company</option>
+                <% for(company of companies) { %>
+                    <option value="<%= company._id %>"><%= company.name %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Date:</label>
+            <div class="col-sm-10">
+              <input type="date" name="date" class="form-control" id="name" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Result</label>
+            <div class="col-sm-10">
+              <!-- <input type="text" name="name" class="form-control" id="name" required> -->
+              <select class="form-control" name="result">
+                <option>Select an option</option>
+                <option value="Registered">Registered</option>
+                <option value="Pass">Pass</option>
+                <option value="Fail">Fail</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Didn't Attempt">Didn't Attempt</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create Company</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+ 

@@ -8,5 +8,6 @@ router.get('/',homeController.home)
 router.use('/employee',require('./employee'))
 router.use('/students', require('./student'))
 router.use('/companies', require('./company'))
-// router.get('/students', studentController.studentsPage);
+router.use('/interviews', require('./interview'))
+
 module.exports=router;
