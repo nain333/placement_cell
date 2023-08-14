@@ -50,5 +50,10 @@ module.exports.destroySession = (req, res) => {
       return res.redirect("/");
     });
 };
+module.exports.updateInterview=async function (req,res){
+    console.log('req.body inside the updateINterview',req.body)
+
+
+}
 
 
