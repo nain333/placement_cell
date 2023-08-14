@@ -146,7 +146,7 @@
                 Edit
               </a> -->
               <a
-                href="/student/destroy/<%= student.id %>"
+                href="/students/destroy/<%= student.id %>"
                 class="btn btn-danger"
                 style="width: 40%"
               >
@@ -165,6 +165,7 @@
                   <tr>
                     <th scope="col">Company</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Result</th>
                   </tr>
                 </thead>
@@ -174,6 +175,8 @@
                     <td><%= interview.company.name %></td>
                     <td><%= interview.date_of_visit %></td>
                     <td><%= interview.status %></td>
+                    <td><%= interview.result %></td>
+
                   </tr>
                   <%} %>
                 </tbody>

@@ -28,9 +28,12 @@ module.exports.createInterview = async function (req, res) {
       status: req.body.status
     })
     const student = await Student.findOne({ _id: req.body.studentId })
+    const company = await Company.findOne({_id:req.body.companyId})
     // console.log('Student inside the interview creation ', student)
-    student.interviewList.push(interview._id)
-    student.save()
+    company.interviewList.push(interview._id);
+    student.interviewList.push(interview._id);
+    student.save();
+    company.save();
     // console.log('pushed Student' , student)
     // console.log("Successfully Created Interview!", interview._id);
     return res.redirect('back')

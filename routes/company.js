@@ -6,4 +6,5 @@ const companyController = require('../controllers/company_controller.js')
 
 router.get('/',passport.checkAuthentication, companyController.companyPage);
 router.post('/createCompany',passport.checkAuthentication, companyController.createCompany);
+router.get('/destroy/:id',passport.checkAuthentication,companyController.deleteCompany)
 module.exports = router;

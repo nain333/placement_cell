@@ -14,13 +14,9 @@ module.exports.studentsPage = async function(req,res){
             for (let interview of student.interviewList) {
               await Interview.populate(interview, { path: 'company' });
               await Interview.populate(interview, { path: 'student' });
-          
-              console.log("Populated Interview:", interview);
-              console.log("Populated Company:", interview.company);
-              console.log("Populated Student:", interview.student);
             }
             console.log("Populated Student:", student);
-          }
+        }
         
         res.render('students', {
             title: "Students Page",
@@ -54,3 +50,29 @@ module.exports.createStudent = async(req,res)=>{
         return res.redirect('back')
     }
 }
+
+module.exports.deleteStudent = async function (req, res) {
+    try {
+      const id = req.params.id
+      const deletedStudent = await Student.findById(id)
+      
+      for(let interview of deletedStudent.interviewList){
+          try{
+                  const deleteInterview = await Interview.findByIdAndDelete(interview._id);
+                  console.log("Deleted Interview Within Student!", deletedStudent.name)
+                }
+                catch(err){
+                    console.log("Error Deleting Interview of ", deletedStudent.name)
+                }
+                
+            }
+            const  deleteStudent= await Student.findByIdAndDelete(id)
+            console.log('Successfully Deleted Student!', deleteStudent)
+          
+          
+      return res.redirect('back')
+    } catch (err) {
+      console.log('Error Deleting Company!', err)
+      return res.redirect('back')
+    }
+  }

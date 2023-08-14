@@ -58,6 +58,7 @@
                     <tr>
                       <th scope="col">Student</th>
                       <th scope="col">Date</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Result</th>
                     </tr>
                   </thead>
@@ -65,13 +66,16 @@
                     <% for(interview of company.interviewList) {%>
                       <tr class="text-capitalize">
                         <td>
-                          <%= interview.student %>
+                          <%= interview.student.name %>
                         </td>
                         <td>
-                          <%= interview.date %>
+                          <%= interview.date_of_visit %>
                         </td>
                         <td>
                           <%= interview.status %>
+                        </td>
+                        <td>
+                          <%= interview.result %>
                         </td>
                       </tr>
                       <%} %>
@@ -80,7 +84,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-around mb-2" style="width: 100%">
-                <a href="/company/destroy/<%= company.id %>" class="btn btn-danger" style="width: 200px">
+                <a href="/companies/destroy/<%= company._id %>" class="btn btn-danger" style="width: 200px">
                   Delete Company
                 </a>
               </div>
