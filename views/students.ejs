@@ -171,8 +171,8 @@
                 <tbody>
                   <% for(interview of student.interviewList) {%>
                   <tr class="text-capitalize">
-                    <td><%= interview.company %></td>
-                    <td><%= interview.date %></td>
+                    <td><%= interview.company.name %></td>
+                    <td><%= interview.date_of_visit %></td>
                     <td><%= interview.status %></td>
                   </tr>
                   <%} %>

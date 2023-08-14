@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/placement_cell_dev_db')
+mongoose.connect('mongodb+srv://developerashis99:gSlbbzdGZMlhuLRb@cluster0.3m2ngtn.mongodb.net/Placement-Cell_Dev')
 // extract the connection
 const db = mongoose.connection
 db.on('error',console.error.bind(console,"Error in connecting to the db"))

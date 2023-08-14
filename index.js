@@ -27,7 +27,7 @@ app.use(session({
     cookie:{
         maxAge:(1000*60*100)
     },store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/placement_cell_dev_db",
+        mongoUrl: "mongodb+srv://developerashis99:gSlbbzdGZMlhuLRb@cluster0.3m2ngtn.mongodb.net/Placement-Cell_Dev",
         autoRemove: 'disabled'
     }),
 }))

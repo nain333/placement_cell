@@ -13,10 +13,15 @@ const interviewSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
-    result: {
+    status: {
         type: String,
         enum: ["Pass", "Fail", "On Hold", "Didn't Attempt", "Registered"],
         default: "Registered"
+    },
+    result: {
+        type: String,
+        enum: ["Placed", "Not Placed"],
+        default: "Not Placed"
     }
     
     

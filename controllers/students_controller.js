@@ -1,4 +1,7 @@
 const Student = require('../models/students');
+const Company = require('../models/company');
+const Interview = require('../models/interview');
+
 
 
 module.exports.studentsPage = async function(req,res){
@@ -6,7 +9,19 @@ module.exports.studentsPage = async function(req,res){
     try{
 
         const students = await Student.find({})
-        console.log("fetched Students: ", students)
+        .populate('interviewList')        
+        for (let student of students) {
+            for (let interview of student.interviewList) {
+              await Interview.populate(interview, { path: 'company' });
+              await Interview.populate(interview, { path: 'student' });
+          
+              console.log("Populated Interview:", interview);
+              console.log("Populated Company:", interview.company);
+              console.log("Populated Student:", interview.student);
+            }
+            console.log("Populated Student:", student);
+          }
+        
         res.render('students', {
             title: "Students Page",
             user: req.user,

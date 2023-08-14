@@ -16,14 +16,19 @@ const options = {
 const formattedDate = date.toLocaleDateString('en-US', options);
 console.log(formattedDate);
 
-        console.log("Req.Body inside interview creation:",req.body)
+        // console.log("Req.Body inside interview creation:",req.body)
         const interview = await Interview.create({
             student: req.body.studentId,
             company: req.body.companyId,
             date_of_visit :formattedDate,
-            result: req.body.result
-        })    
-        console.log("Successfully Created Interview!", interview);
+            status: req.body.status,
+        })
+        const student = await Student.findOne({_id:req.body.studentId})
+        console.log('Student inside the interview creation ', student)
+        student.interviewList.push(interview._id)
+        student.save();
+        console.log('pushed Student' , student)    
+        console.log("Successfully Created Interview!", interview._id);
         return res.redirect('back');
     }catch(err){
         console.log('Error while interview creation: ',err)

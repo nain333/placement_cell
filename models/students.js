@@ -38,7 +38,7 @@ const StudentSchema = new mongoose.Schema(
       required: true
     },
     interviewList: [
-      {
+       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Interview'
       }
@@ -47,4 +47,4 @@ const StudentSchema = new mongoose.Schema(
   { timestamps: true }
 )
 const Student = mongoose.model('Student', StudentSchema)
-module.exports = Student
+module.exports = Student;
