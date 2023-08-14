@@ -65,7 +65,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Create Company</button>
+            <button type="submit" class="btn btn-primary">Create Interview</button>
           </div>
         </form>
       </div>
@@ -74,6 +74,7 @@
 
 
   <!-- Table -->
+
   <table class="table mt-4 table-bordered table-striped" style="width: 90%; margin: auto;">
     <thead>
       <tr class="table-dark">
@@ -88,15 +89,6 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <tr class="table-success">
-        <th scope="row">1</th>
-        <td>Ashis</td>
-        <td>Coding Ninjas</td>
-        <td>12 Aug 2023</td>
-        <td>Registered</td>
-        <td><a href="#">Update</a></td>
-        <td><a href="#">Delete</a></td>
-      </tr> -->
       <% let i = 0 %>
       <% for(interview of interviews) { %>
         <% i = i + 1 %>
@@ -107,9 +99,78 @@
             <td><%= interview.date_of_visit %></td>
             <td><%= interview.status %></td>
             <td><%= interview.result %></td>
-            <td><a href="#">Update</a></td>
-            <td><a href="#">Delete</a></td>
+            <td> <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#<%= interview._id %>">
+              Update Status
+            </button></td>
+
+            <td><a href="/interviews/delete-interview/<%= interview._id %>" class="btn btn-danger mx-3">Delete</a></td>
           </tr>
+
+         
+         
+          <%
+          function formatDate(date) {
+            const dateObject = new Date(date);
+            const year = dateObject.getFullYear();
+            const month = String(dateObject.getMonth() + 1).padStart(2, "0");
+            const day = String(dateObject.getDate()).padStart(2, "0");
+            return `${year}-${month}-${day}`;
+          }
+          %>
+          
+          
+
+        <div class="modal fade" id="<%= interview._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update <%= interview.student.name %>'s Interview</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form class="modal-body" action="/interviews/update-interview/<%= interview._id %>" method="post">
+                <h4 class="text-center mt-1 "><%= interview.company.name %></h4>
+                <div class="row mx-3 mb-2">
+                  <label for="name" class="col-sm-2 col-form-label">Date:</label>
+                  <div class="col-sm-10">
+                    <input type="date" name="date" class="form-control" id="name" value="<%= formatDate(interview.date_of_visit) %>" required>
+                  </div>
+                </div>
+
+                <div class="row mx-3 mb-2">
+                  <label for="name" class="col-sm-2 col-form-label">Status</label>
+                  <div class="col-sm-10">
+                    <!-- <input type="text" name="name" class="form-control" id="name" required> -->
+                    <select class="form-control" name="status">
+                      <option>Select an option</option>
+                      <option value="Registered">Registered</option>
+                      <option value="Pass">Pass</option>
+                      <option value="Fail">Fail</option>
+                      <option value="On Hold">On Hold</option>
+                      <option value="Didn't Attempt">Didn't Attempt</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mx-3 mb-2">
+                  <label for="name" class="col-sm-2 col-form-label">Result</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" name="result">
+                      <option value="Not Placed">Not Placed</option>
+                      <option value="Placed">Placed</option>
+                    </select>
+                  </div>
+                </div>
+      
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Update Interview</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         <% } %>
     </tbody>
   </table>
