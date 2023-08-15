@@ -9,6 +9,8 @@ const path = require('path');
 const db = require('./config/mongoose.js')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
+const customMware=require('./config/middleware')
+const flash = require('connect-flash')
 
 
 app.set('view engine','ejs')
@@ -37,8 +39,11 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 // Assets
-app.use(express.static('./assets'));
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.urlencoded({extended:true}))
+app.use(flash())
+app.use(customMware.setFlash)
+
 app.use('/',require('./routes'))
 
 app.listen(port,(err)=>{

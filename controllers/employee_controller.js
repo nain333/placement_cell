@@ -2,6 +2,7 @@ const Employee = require('../models/employee')
 
 module.exports.signIn = function(req,res){
     if(req.isAuthenticated()){
+        req.flash('success', 'Signed In Successfully!');
         return res.redirect('/students');
     }
     res.render('sign_in',{
@@ -36,6 +37,7 @@ module.exports.create = async(req,res)=>{
 // Creating Session
 module.exports.createSession = (req, res) => {
     console.log("Logged in Successfully");
+    req.flash('success', 'Signed In Successfully!');
     return res.redirect("/students");
   };
 
