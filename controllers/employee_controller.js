@@ -55,5 +55,10 @@ module.exports.updateInterview=async function (req,res){
 
 
 }
+module.exports.forgotPassword=async function(req,res){
+    res.render('forgot_password',{
+        title:'Forgot Password | Career Hub'
+    })
+}
 
 

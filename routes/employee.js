@@ -9,5 +9,6 @@ router.get('/sign-up',employeeController.signUp)
 router.post('/create', employeeController.create)
 router.post('/create-session',passport.authenticate('local',
 {failureRedirect:'/employee/sign-in'}), employeeController.createSession)
+router.get('/forgot-password',employeeController.forgotPassword)
 
 module.exports=router
