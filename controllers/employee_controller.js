@@ -50,6 +50,7 @@ module.exports.destroySession = (req, res) => {
         return;
       }
       console.log("Successfully logged out!");
+      req.flash('success','Logged out successfuly!')
       return res.redirect("/");
     });
 };
