@@ -27,6 +27,7 @@ module.exports.create = async(req,res)=>{
         });
     
         console.log("Account Created Successfully!", employee);
+        req.flash('success','Signed up Successfuly!')
         return res.redirect('/employee/sign-in');
     } catch (err) {
         console.log("Error Creating User!", err);
