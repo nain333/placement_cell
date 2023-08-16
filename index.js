@@ -1,18 +1,22 @@
 const express = require('express')
 const app = express()
+const db = require('./config/mongoose.js')
+
+require('dotenv').config()
+
 const passport=require('passport')
 const passportLocal=require('passport-local')
 const localStreategy=require('./config/passport-local-streategy')
 const googlePassport=require('./config/passport-google-oauth2-strategy')
 const port = 9000
+
 const expressLayouts=require('express-ejs-layouts')
 const path = require('path');
-const db = require('./config/mongoose.js')
+
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const customMware=require('./config/middleware')
 const flash = require('connect-flash')
-
 
 app.set('view engine','ejs')
 app.set('views', './views');
@@ -24,13 +28,13 @@ app.set('layout extractScripts',true)
 app.use(session({
     name:'placement-lesscell',
     // Todo change the secrate before deployment
-    secret: 'this_is_not_a_secrate_anymore_lol_please_help_me_setting_up_coockie_njfksdljfkdjfksdajfksdjkf',
+    secret: process.env.sessionSecret,
     saveUninitialized:false,
     resave:false,
     cookie:{
         maxAge:(1000*60*100)
     },store: MongoStore.create({
-        mongoUrl: "mongodb+srv://hnain70:P9xnRimzvA2uXpJ4@cluster0.a7a8nra.mongodb.net/placement_cell_db",
+        mongoUrl: process.env.mongodbUrl,
         autoRemove: 'disabled'
     }),
 }))

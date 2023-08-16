@@ -2,17 +2,18 @@ const passport = require('passport')
 const googleStrategy=require('passport-google-oauth').OAuth2Strategy
 const crypto = require('crypto')
 const Employee = require('../models/employee')
+
+const googleClientId = process.env.googleClientId;
+const googleClientSecret = process.env.googleClientSecret
+const googleCallbackUrl = process.env.googleCallbackUrl
+
+
 passport.use(new googleStrategy({
-    clientID:'82631915071-hu325i6j62idbe9hgqd2a19lghcl42ok.apps.googleusercontent.com',
-    clientSecret:'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',
-    callbackURL:'https://career-hub-vcus.onrender.com/employee/auth/google/callback'
+    clientID: googleClientId,
+    clientSecret: googleClientSecret,
+    callbackURL: googleCallbackUrl
 },function(accessToken,refreshToken,profile,done){
         Employee.findOne({email:profile.emails[0].value}).then(function(employee){
-            // if(error){
-            //     console.log('error in strategy passport-google-oauth',error)
-            // return
-            
-            // }
             console.log('profile: ',profile)
             if(employee){
                 console.log('employee found in the db itself')

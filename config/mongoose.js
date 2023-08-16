@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://hnain70:P9xnRimzvA2uXpJ4@cluster0.a7a8nra.mongodb.net/placement_cell_db')
+require('dotenv').config()
+
+
+mongoose.connect(process.env.mongodbUrl)
 // extract the connection
 const db = mongoose.connection
 db.on('error',console.error.bind(console,"Error in connecting to the db"))
