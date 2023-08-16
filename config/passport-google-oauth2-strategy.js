@@ -3,9 +3,9 @@ const googleStrategy=require('passport-google-oauth').OAuth2Strategy
 const crypto = require('crypto')
 const Employee = require('../models/employee')
 passport.use(new googleStrategy({
-    clientID:'82631915071-u2atp1h3lrtjausjpvrae63m44tu3oie.apps.googleusercontent.com',
-    clientSecret:'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',
-    callbackURL:'/employee/auth/google/callback'
+    clientID:'82631915071-hu325i6j62idbe9hgqd2a19lghcl42ok.apps.googleusercontent.com',
+    clientSecret:'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',
+    callbackURL:'https://career-hub-vcus.onrender.com/employee/auth/google/callback'
 },function(accessToken,refreshToken,profile,done){
         Employee.findOne({email:profile.emails[0].value}).then(function(employee){
             // if(error){
