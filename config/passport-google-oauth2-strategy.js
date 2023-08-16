@@ -16,9 +16,9 @@ passport.use(new googleStrategy({
             console.log('profile: ',profile)
             if(employee){
                 console.log('employee found in the db itself')
-                return done(null, user)
+                return done(null, employee)
             }else{
-                console.log('inside the user creation using google-auth')
+                console.log('inside the employee creation using google-auth')
                 Employee.create({
                     name:profile.displayName,
                     email:profile.emails[0].value,
