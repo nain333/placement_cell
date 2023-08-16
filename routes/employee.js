@@ -6,6 +6,8 @@ const passport = require('passport')
 
 router.get('/sign-in',employeeController.signIn)
 router.get('/sign-up',employeeController.signUp)
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failiureRedirect:'/employee/sign-in'}),employeeController.createSession)
 router.post('/create', employeeController.create)
 router.post('/create-session',passport.authenticate('local',
 {failureRedirect:'/employee/sign-in'}), employeeController.createSession)

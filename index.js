@@ -3,6 +3,7 @@ const app = express()
 const passport=require('passport')
 const passportLocal=require('passport-local')
 const localStreategy=require('./config/passport-local-streategy')
+const googlePassport=require('./config/passport-google-oauth2-strategy')
 const port = 9000
 const expressLayouts=require('express-ejs-layouts')
 const path = require('path');
