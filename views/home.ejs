@@ -9,7 +9,9 @@
     <p>
       "Embrace each challenge as a stepping stone to success, <br />and let your
       dedication be the guiding light towards your dreams."
+      
     </p>
+    <% if(!employee) {%>
     <a href="/employee/sign-up">Sign Up</a>
     <a href="/employee/sign-in">Sign In</a>
     <a href="/employee/auth/google" class="sign-in-google">
@@ -19,5 +21,12 @@
       />
       Continue with Google
     </a>
+    <% } else{ %>
+      <a href="/students">Take me to Students Page</a>
+      <a href="/employee/destroy-session">Sign Out</a>
+
+      <% } %>
+      
   </div>
+  
 </div>

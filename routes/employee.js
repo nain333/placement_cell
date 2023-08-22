@@ -13,5 +13,9 @@ router.post('/create-session',passport.authenticate('local',
 {failureRedirect:'/employee/sign-in'}), employeeController.createSession)
 router.get('/forgot-password',employeeController.forgotPassword)
 router.get('/destroy-session',employeeController.destroySession)
+router.post('/account-recovery',employeeController.resetPassword)
+router.get('/forgot-password',employeeController.forgotPassword)
+router.get('/reset-password/:accessToken',employeeController.askNewPassword)
+router.post('/reset-password/:accessToken',employeeController.setNewPassword)
 
 module.exports=router
