@@ -1,0 +1,25 @@
+.recovery_container{
+    background-image: url("https://cdn.pixabay.com/photo/2018/04/22/22/57/hacker-3342696_1280.jpg");
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
+}
+.text{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(195, 192, 192, 0.5);
+    border: 0.5px solid rgb(120, 193, 248);
+    color:aquamarine;
+    /* animation:animate__heartBeat; */
+
+
+}

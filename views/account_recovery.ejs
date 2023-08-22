@@ -1,6 +1,16 @@
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <link rel="stylesheet" href="/css/account_recovery.css">
+
+<div class="recovery_container">
+    <div class="text" >
 <% if(!resetUser) {%>
     <h1>No user found with <%= resetMail %></h1>
 <% } else { %>
-    <h5>An email with reset Password link has been sent to </h5><h1><%= resetMail %></h1>
+    <h5>An email with reset Password link has been sent to </h5><h1 class="  animate__animated animate__fadein animate__infinite"><%= resetMail %></h1>
 <% } %>
+    </div>
+</div>
