@@ -95,7 +95,7 @@ module.exports.resetPassword=async function(req,res){
 
     }
     return res.render('account_recovery',{
-        title:'Account Recovry || Codial',
+        title:'Account Recovry || The Authenticator',
         resetUser:employee,
         resetMail:req.body.reset_mail
         
