@@ -7,6 +7,7 @@ module.exports.createCompany = async (req, res) => {
     const company = await Company.create({
       name: req.body.name
     })
+    req.flash('success','Interview Created Successfully')
     return res.redirect('back')
   } catch (err) {
     console.log('Error in creating company:', err)

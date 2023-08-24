@@ -22,7 +22,19 @@ const interviewSchema = new mongoose.Schema({
         type: String,
         enum: ["Placed", "Not Placed"],
         default: "Not Placed"
-    }
+    },
+    students:[{
+
+        student:{
+            type:mongoose.Types.ObjectId,
+            ref:'Student'
+
+
+        },
+
+    }]
+
+
     
     
 

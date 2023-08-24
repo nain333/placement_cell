@@ -12,7 +12,7 @@ exports.resetPasswordToken=(resetToken)=>{
     
     
     nodeMailer.transporter.sendMail({
-        from:'admin@codial.com',
+        from:'admin@CareerHub.com',
         to: resetToken[1].employee.email,
         subject:"Password Reset Requested!",
         html:htmlString

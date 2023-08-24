@@ -36,6 +36,7 @@ module.exports.createInterview = async function (req, res) {
     company.save();
     // console.log('pushed Student' , student)
     // console.log("Successfully Created Interview!", interview._id);
+    req.flash('success','Interview Created Successfuly!')
     return res.redirect('back')
   } catch (err) {
     console.log('Error while interview creation: ', err)
@@ -80,6 +81,7 @@ module.exports.updateInterview = async function (req, res) {
     console.log('interviewId: ', id)
     console.log('request body inside the updateInterview ', req.body)
     console.log('updated interiview: ', updateInterview)
+    req.flash('success','Interview Updated Successfully')
     return res.redirect('back')
   } catch (err) {
     console.log('error in updating interview: ', err)
@@ -92,6 +94,7 @@ module.exports.deleteInterview = async(req,res)=>{
         let deletedInterview = await Interview.findByIdAndDelete(id);
         
         console.log("Successfully Deleted Interview!", deletedInterview);
+        req.flash('success','Interview  for Deleted Successfuly')
         res.redirect('back');
     }
     catch(err){
